@@ -1,0 +1,19 @@
+import csv
+
+with open('Exp1.csv', 'r') as file:
+    data = list(csv.reader(file))
+
+data = data[1:]
+
+for row in data:
+    if row[-1] == 'Yes':
+        hypothesis = row[:-1]
+        break
+
+for row in data:
+    if row[-1] == 'Yes':
+        for i in range(len(hypothesis)):
+            if hypothesis[i] != row[i]:
+                hypothesis[i] = '?'
+
+print("Final Hypothesis:", hypothesis)
