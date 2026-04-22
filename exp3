@@ -1,0 +1,15 @@
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+
+data = pd.read_csv("id3.csv")
+
+X = pd.get_dummies(data.iloc[:, :-1])
+y = data.iloc[:, -1]
+
+model = DecisionTreeClassifier(criterion='entropy')
+model.fit(X, y)
+
+print("Model trained")
+
+sample = X.iloc[0:1]
+print("Prediction:", model.predict(sample))
